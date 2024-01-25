@@ -1,0 +1,96 @@
+header{
+    background-color: dodgerblue;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    
+    li{
+        list-style: none;
+    }
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        width: 100vw;
+        .hamburger{
+            display: none;
+            .bar{
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+                background-color: white;
+            }
+        } 
+        .nav-menu{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .nav-item{
+                margin-left: 5rem;
+                .nav-link{
+                    font-size: 1rem;
+                    font-weight: 400;
+                   /*  opacity: .7;
+                    transition: .5s;*/
+                    &:hover{
+                        cursor: pointer;
+                      //  opacity: 1;
+                    } 
+                }
+            }
+        }
+        @media screen and (max-width: 880px) {
+            .nav-menu{
+                position: fixed;
+                left: -100%;
+                top: 5rem;
+                flex-direction: column;
+                background-color: dodgerblue;
+                width: 100%;
+                border-radius: 10px;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                z-index: 2;
+                .nav-item{
+                    margin: 1rem 0;
+                }
+            }
+            .active{
+                left: 0;
+            }
+            .hamburger{
+                display: block;
+                cursor: pointer;
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+        
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+        
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+        /* @media screen and (max-width: 380px){
+            .nav-menu{
+                top: 7rem;
+            }
+        } */
+    }
+}

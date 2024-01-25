@@ -1,0 +1,22 @@
+.user_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.user_container .buttons .btn {
+  all: unset;
+  color: white;
+  padding: 5px;
+  border-radius: 8px;
+}
+.user_container .buttons .btn:hover {
+  cursor: pointer;
+}
+.user_container .buttons .red {
+  margin-left: 0.5rem;
+  background-color: #F64740;
+}
+.user_container .buttons .norm {
+  background-color: dodgerblue;
+}
+/*# sourceMappingURL=style.css.map */

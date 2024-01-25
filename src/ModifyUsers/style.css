@@ -1,0 +1,14 @@
+.list_header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.list_header img {
+  margin-left: 15px;
+  width: 26px;
+  height: 26px;
+}
+.list_header img:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

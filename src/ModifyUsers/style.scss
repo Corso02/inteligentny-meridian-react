@@ -1,0 +1,13 @@
+.list_header{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    img{
+        margin-left: 15px;
+        width: 26px;
+        height: 26px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
