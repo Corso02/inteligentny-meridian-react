@@ -7,12 +7,25 @@ MQTT_PASSWORD=this.is.mqtt
 MQTT_URL=mqtt://192.168.0.200:1883
 
 */
+
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
 if(is_dev){
     mqtt_options = {
         host: "localhost",
         protocol: "ws",
         port: 8000,
-        clientId: "StyriaPlusPesFrontEnd",
+        clientId: "StyriaPlusPesFrontEnd"+makeid(6),
         username: "maker",
         password: "this.is.mqtt",
         connectUrl: "ws://localhost:8000"
@@ -23,7 +36,7 @@ else{
         host: "147.232.205.204",
         protocol: "ws",
         port: 8000,
-        clientId: "StyriaPlusPesFrontEnd",
+        clientId: "StyriaPlusPesFrontEnd"+makeid(6),
         username: "maker",
         password: "mother.mqtt.password",
         connectUrl: "ws://147.232.205.204:8000"

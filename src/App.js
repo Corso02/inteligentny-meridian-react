@@ -7,7 +7,7 @@ import Prefs from './Prefs/Prefs';
 import Stats from './Stats/Stats';
 import Footer from './Footer/Footer';
 import ModifyUsers from './ModifyUsers/ModifyUsers';
-import mqtt from 'mqtt';
+import mqtt, { applyMixin } from 'mqtt';
 import Swal from 'sweetalert2';
 
 function App() {
@@ -25,9 +25,18 @@ function App() {
   const [mqttConnected, setMqttConnected] = useState(false)
 
   	useEffect(() => {
-		console.log("napajam")
+		console.log("napajam MQTT CLIENT")
       	setClient(mqtt.connect(mqtt_options.connectUrl, mqtt_options))
   	}, [])
+
+	useEffect(() => {
+		if(adminPanelOpened || prefsOpened){
+			document.body.style.overflowY = "hidden"
+		}
+		else{
+			document.body.style.overflowY = "scroll"
+		}
+	}, [adminPanelOpened, prefsOpened])
 
 	useEffect(() => {
 		if(mqttClient){
@@ -36,9 +45,11 @@ function App() {
 				setMqttConnected(true)
         	})
 			mqttClient.on("err", () => {
+				console.log("dik error")
 				setMqttConnected(false)
 			})
 			mqttClient.on("reconnect", () => {
+				console.log("wtf reconecting")
 				setMqttConnected(false)
 			})
     	}
@@ -154,11 +165,11 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className={(adminPanelOpened || prefsOpened) ? "App hide" : "App"}>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} server_url={server_url} isAdmin={isAdmin} setIsAdmin={setIsAdmin} openAdminPanel={setAdminPanelOpened} openPrefs = {setPrefsOpened} set_user_id={setUserId} modify_user={setModifyUser} set_user_modified={setUserModified} user_modified={userModified}/>
       {(isLoggedIn && adminPanelOpened) && <div className='popUp_container'><AdminPanel adminPanelOpened={setAdminPanelOpened} server_url={server_url}/></div>}
       {(isLoggedIn && prefsOpened) && <div className='popUp_container'><Prefs prefsOpened={setPrefsOpened} user_id={userId} server_url={server_url}/></div>}
-      { (!modifyUser)  && <Stats server_url={server_url} />}
+      { (!modifyUser)  && <Stats server_url={server_url} mqttConnected={mqttConnected} />}
       {(isLoggedIn && isAdmin && modifyUser) && <ModifyUsers server_url={server_url} setUserModified={setUserModified} userModified={userModified}/>}
       <Footer />
     </div>

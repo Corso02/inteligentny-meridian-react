@@ -6,6 +6,10 @@
   padding: 10px;
   box-shadow: 1px 1px 50px 5px rgba(0, 0, 0, 0.28);
   border-radius: 8px;
+  height: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: white;
 }
 .adminPanel_wrapper .adminPanel_header {
   display: flex;

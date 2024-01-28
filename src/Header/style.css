@@ -86,5 +86,4 @@ header .navbar .nav-menu .nav-item .nav-link:hover {
   header .navbar .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

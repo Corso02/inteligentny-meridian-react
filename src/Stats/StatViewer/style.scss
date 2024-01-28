@@ -1,0 +1,47 @@
+@keyframes slide-down {
+    0% {
+     max-height: 0px;
+     opacity: 0;
+    }
+    100% {
+     max-height: auto;
+     opacity: 1;
+    }
+   }
+
+.stat_viewer_wrapper{
+    margin-right: 10px;
+    margin-top: 10px;
+    &:hover{
+        cursor: pointer;
+    }
+    .stat_viewer_header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        img{
+            width: 32px;
+            height: 32px;
+            transition: .5s;
+            
+        }
+        .opened{
+            rotate: 180deg;
+        }
+    }
+    .stat_viewer_body{
+        overflow: hidden;
+        height: 0px;
+        transition: all .5s ease-in-out;
+    }
+    .active{
+       height: 100px;
+       transition: all .5s ease-in-out;
+    }
+    .show{
+        visibility: visible;
+    }
+    .hide{
+        visibility: hidden;
+    }
+}
